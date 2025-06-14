@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>OSSL Learning - Accueil</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/commun.css">
+  <link rel="stylesheet" href="css/style.css"> 
+</head>
+<body>
+
+  <!-- Barre de navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark shadow-sm fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="index.html">OSSL Learning</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html" target="_blank">Accueil</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#connexionModal">Connexion</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenu principal -->
+  <div class="content text-center">
+    <h1>Bienvenue chez <strong>OSSL Learning</strong></h1>
+    <p class="mission">Votre savoir, notre mission</p>
+
+    <!-- Boutons principaux -->
+    <div class="main-buttons mt-5">
+      <a href="Espace_prof.html" class="btn btn-primary btn-lg">Espace Professeur</a>
+      <a href="Espace_etudiant.html" class="btn btn-success btn-lg">Espace Étudiant</a>
+    </div>
+  </div>
+
+  <!-- Modal Connexion -->
+  <div class="modal fade" id="connexionModal" tabindex="-1" aria-labelledby="connexionModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content text-center">
+        <div class="modal-header">
+          <h5 class="modal-title" id="connexionModalLabel">Connexion</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p>Veuillez choisir votre rôle :</p>
+          <a href="Connexion_etud.html" class="btn btn-success mb-2">Étudiant</a><br>
+          <a href="connexion.html" class="btn btn-primary">Professeur</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pied de page -->
+  <footer>
+    <p>Contact : ossl-learning@ensao.ump.ma</p>
+    <div class="footer-links">
+      <a href="#">Politique de confidentialité</a> |
+      <a href="#">Conditions d’utilisation</a>
+    </div>
+    <p class="mt-2">© 2025 - OSSL Learning</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

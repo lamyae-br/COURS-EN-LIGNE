@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Ajouter un Cours - OSSL Learning</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/commun.css">
+  <link rel="stylesheet" href="css/style9.css">
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark shadow-sm fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="acceuil.html">OSSL Learning</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="acceuil.html">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="planning.html">Planning</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="choix_filiere.html">Choix de Filières</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="cours.html">Cours</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="notification_etud.html">
+            Notifications <span class="badge bg-danger" id="notifCount"></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="content container mt-5 pt-5">
+  <h2 class="text-center mb-4">Ajouter un Contenu Pédagogique</h2>
+
+  <div class="professeur-section">
+    <form id="formCours">
+      <div class="mb-3">
+        <label for="type" class="form-label">Type de contenu :</label>
+        <select class="form-control" id="type" required>
+          <option value="">-- Sélectionner --</option>
+          <option value="cours">Cours</option>
+          <option value="td">Travaux Dirigés</option>
+          <option value="quiz">Évaluation</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="titre" class="form-label">Titre :</label>
+        <input type="text" class="form-control" id="titre" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description :</label>
+        <textarea class="form-control" id="description" rows="3"></textarea>
+      </div>
+
+      <div id="dynamicFields">
+       
+      </div>
+
+      <div class="d-flex justify-content-end mt-4">
+        <button type="reset" class="btn btn-outline-secondary me-2">Annuler</button>
+        <button type="submit" class="btn btn-primary">Publier</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<footer>
+  <p>Contact : ossl-learning@ensao.ump.ma</p>
+  <div class="footer-links">
+    <a href="#">Politique de confidentialité</a> |
+    <a href="#">Conditions d'utilisation</a>
+  </div>
+  <p class="mt-2">© 2025 - OSSL Learning</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  
+  document.getElementById('type').addEventListener('change', function() {
+    const type = this.value;
+    const dynamicFields = document.getElementById('dynamicFields');
+    dynamicFields.innerHTML = '';
+
+    if (type === 'cours' || type === 'td') {
+      dynamicFields.innerHTML = `
+        <div class="mb-3">
+          <label class="form-label">Ressources :</label>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="addFile">
+            <label class="form-check-label" for="addFile">Ajouter un fichier</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="addVideo">
+            <label class="form-check-label" for="addVideo">Ajouter une vidéo</label>
+          </div>
+        </div>
+        <div id="fileField" class="mb-3 d-none">
+          <label for="file" class="form-label">Fichier :</label>
+          <input type="file" class="form-control" id="file">
+        </div>
+        <div id="videoField" class="mb-3 d-none">
+          <label for="video" class="form-label">Lien vidéo :</label>
+          <input type="url" class="form-control" id="video" placeholder="https://...">
+        </div>
+      `;
+
+      document.getElementById('addFile').addEventListener('change', function() {
+        document.getElementById('fileField').classList.toggle('d-none', !this.checked);
+      });
+
+      document.getElementById('addVideo').addEventListener('change', function() {
+        document.getElementById('videoField').classList.toggle('d-none', !this.checked);
+      });
+    } 
+    else if (type === 'quiz') {
+      dynamicFields.innerHTML = `
+        <div class="mb-3">
+          <label for="quizLink" class="form-label">Lien du quiz :</label>
+          <input type="url" class="form-control" id="quizLink" placeholder="https://...">
+        </div>
+        <div class="mb-3">
+          <label for="dueDate" class="form-label">Date limite :</label>
+          <input type="datetime-local" class="form-control" id="dueDate">
+        </div>
+      `;
+    }
+  });
+
+  
+  function updateNotificationCount() {
+    const count = localStorage.getItem('newNotifications') || 0;
+    document.getElementById('notifCount').textContent = count;
+    document.getElementById('notifCount').style.display = count > 0 ? 'inline-block' : 'none';
+  }
+  updateNotificationCount();
+});
+</script>
+</body>
+</html>

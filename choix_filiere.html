@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Choix de Filière - Professeur</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="css/commun.css">
+  <link rel="stylesheet" href="css/style7.css">
+</head>
+<body>
+
+  
+  <nav class="navbar navbar-expand-lg navbar-dark shadow-sm fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="accueil_prof.html">
+        <img src="../images/logo.png" alt="OSSL Learning" height="30" class="d-inline-block align-top">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="accueil.html">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Planning.html">Planning</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Choix de filière</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="deconnexion.html">Déconnexion</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  
+  <div class="content container mt-5 pt-5">
+    <div class="professeur-section">
+      <h2 class="section-title text-center mb-4">?odules Qffectes</h2>
+      <p class="text-muted mb-4 text-center">Veuillez sélectionner la filière, le niveau et les modules que vous souhaitez enseigner</p>
+
+      <form method="POST" action="traitement_choix_prof.php" id="formChoixFiliereProf">
+       
+        <div class="row mb-4">
+          <div class="col-md-6 mb-3">
+            <div class="card h-100 selection-card">
+              <div class="card-header bg-primary text-white">
+                <h4 class="mb-0"><i class="fas fa-graduation-cap me-2"></i> Filière</h4>
+              </div>
+              <div class="card-body">
+                <select class="form-select form-select-lg" id="selectFiliere" name="filiere" required>
+                  <option value="" selected disabled>Sélectionnez une filière</option>
+                  <option value="GSI">Génie des Systèmes Informatiques (GSI)</option>
+                  <option value="IDS">Ingénierie des Données et Systèmes (IDS)</option>
+                  <option value="IIA">Intelligence Artificielle (IIA)</option>
+                  <option value="RIT">Réseaux et Infrastructures Technologiques (RIT)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="card h-100 selection-card">
+              <div class="card-header bg-primary text-white">
+                <h4 class="mb-0"><i class="fas fa-layer-group me-2"></i> Niveau</h4>
+              </div>
+              <div class="card-body">
+                <select class="form-select form-select-lg" id="selectNiveau" name="niveau" required>
+                  <option value="" selected disabled>Sélectionnez un niveau</option>
+                  <option value="1A">1A</option>
+                  <option value="2A">2A</option>
+                  <option value="3A">3A</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="card mb-4 selection-card" id="modulesSection" style="display: none;">
+          <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h4 class="mb-0"><i class="fas fa-book me-2"></i> Modules disponibles</h4>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="toggleAllModules">
+              <label class="form-check-label" for="toggleAllModules">Tout sélectionner</label>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row" id="modulesContainer">
+              
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="d-flex justify-content-center gap-4 mt-5">
+          <button type="button" id="btnAnnuler" class="btn btn-annuler">
+            <i class="fas fa-times-circle me-2"></i> Annuler
+          </button>
+          <button type="submit" class="btn btn-envoyer" id="btnSubmit" disabled>
+            <i class="fas fa-save me-2"></i> Enregistrer mes choix
+          </button>
+        </div>
+
+        
+        <div id="confirmationMessage" class="alert alert-success mt-4 text-center" style="display: none;">
+          <i class="fas fa-check-circle me-2"></i> Vos choix ont bien été enregistrés !
+        </div>
+      </form>
+    </div>
+  </div>
+
+  
+  <footer class="mt-5">
+    <p class="text-center">Contact : ossl-learning@ensao.ump.ma</p>
+    <div class="footer-links text-center">
+      <a href="#">Politique de confidentialité</a> |
+      <a href="#">Conditions d'utilisation</a>
+    </div>
+    <p class="mt-2 text-center">© 2025 - OSSL Learning</p>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module">
+    import ModulePlanning from './js/ModulePlanning.js';
+
+    // Données statiques pour les modules
+    const modulesDataStatic = [
+        new ModulePlanning("1A", "Algorithmique", "GSI"),
+        new ModulePlanning("1A", "Bases de données", "IDS"),
+        new ModulePlanning("2A", "Machine Learning", "IIA"),
+        new ModulePlanning("3A", "Cloud Computing", "GSI"),
+        new ModulePlanning("3A", "Cybersécurité", "RIT"),
+        new ModulePlanning("2A", "Réseaux avancés", "RIT"),
+    ];
+
+    // Fonction pour afficher les modules filtrés
+    function renderModules(filiere, niveau) {
+        const modulesSection = document.getElementById('modulesSection');
+        const modulesContainer = document.getElementById('modulesContainer');
+
+        // Filtrer les modules en fonction de la filière et du niveau
+        const filteredModules = modulesDataStatic.filter(module => {
+            return (!filiere || module.filliere === filiere) &&
+                   (!niveau || module.niveau === niveau);
+        });
+
+        // Afficher les modules filtrés
+        modulesSection.style.display = filteredModules.length > 0 ? 'block' : 'none';
+        modulesContainer.innerHTML = filteredModules.map(module => `
+            <div class="col-md-6 mb-3">
+                <div class="module-card p-3 rounded">
+                    <h5 class="mb-1">${module.module}</h5>
+                    <small class="text-muted">${module.filliere} - ${module.niveau}</small>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // Gestion des événements pour les sélections
+    document.getElementById('selectFiliere').addEventListener('change', function() {
+        const filiere = this.value;
+        const niveau = document.getElementById('selectNiveau').value;
+        renderModules(filiere, niveau); // Appliquer le filtre
+    });
+
+    document.getElementById('selectNiveau').addEventListener('change', function() {
+        const filiere = document.getElementById('selectFiliere').value;
+        const niveau = this.value;
+        renderModules(filiere, niveau); // Appliquer le filtre
+    });
+
+    // Initialisation sans filtre
+    renderModules(null, null);
+  </script>
+</body>
+</html>

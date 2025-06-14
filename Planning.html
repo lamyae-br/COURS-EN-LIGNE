@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Planning Professeur - OSSL Learning</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/commun.css">
+  <link rel="stylesheet" href="css/style5.css">
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="acceuil.html">OSSL Learning</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="acceuil.html">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="Planning.html">Planning</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="deconnexion.html">Déconnexion</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="content container mt-5 pt-5">
+  <h2 class="text-center mb-4">Planning des Cours</h2>
+
+  
+  <div class="professeur-section mb-5">
+    <h3 class="section-title" id="form-title">Gestion des cours</h3>
+    <form id="form-cours" method="POST" action="#">
+      <input type="hidden" id="cours-id" name="id" value="">
+      
+      <div class="mb-3">
+        <label for="nom" class="form-label">Nom du cours</label>
+        <input type="text" class="form-control" id="nom" name="nom" required>
+      </div>
+      
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label for="date" class="form-label">Date</label>
+          <input type="date" class="form-control" id="date" name="date" required>
+        </div>
+        <div class="col-md-3">
+          <label for="debut" class="form-label">Heure de début</label>
+          <input type="time" class="form-control" id="debut" name="debut" required>
+        </div>
+        <div class="col-md-3">
+          <label for="fin" class="form-label">Heure de fin</label>
+          <input type="time" class="form-control" id="fin" name="fin" required>
+        </div>
+      </div>
+      
+      <div class="d-flex justify-content-end gap-2 mt-4">
+        <button type="reset" class="btn btn-outline-secondary" id="cancel-edit">Annuler</button>
+        <button type="submit" class="btn btn-primary">Enregistrer ce cours</button>
+      </div>
+    </form>
+  </div>
+
+ 
+  <div class="professeur-section">
+    <h3 class="section-title">Planning actuel</h3>
+    <div class="table-responsive">
+      <table class="table prof-table table-hover">
+        <thead>
+          <tr class="table-primary">
+            <th>Nom du cours</th>
+            <th>Date</th>
+            <th>Heure début</th>
+            <th>Heure fin</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Base de données</td>
+            <td>21/05/2025</td>
+            <td>08:00</td>
+            <td>10:00</td>
+            <td>
+              <div class="d-flex justify-content-center gap-2">
+                <button class="btn btn-sm btn-outline-primary edit-btn">Modifier</button>
+                <button class="btn btn-sm btn-outline-danger delete-btn">Supprimer</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Réseaux informatiques</td>
+            <td>22/05/2025</td>
+            <td>10:00</td>
+            <td>12:00</td>
+            <td>
+              <div class="d-flex justify-content-center gap-2">
+                <button class="btn btn-sm btn-outline-primary edit-btn">Modifier</button>
+                <button class="btn btn-sm btn-outline-danger delete-btn">Supprimer</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  
+  <div class="text-center mt-5">
+    <button type="button" class="btn btn-success btn-lg px-5" id="submit-planning">
+      <i class="bi bi-check-circle me-2"></i>Valider et Soumettre le Planning
+    </button>
+  </div>
+</div>
+
+
+<footer class="bg-light py-4 mt-5">
+  <div class="container text-center">
+    <p class="mb-2">Contact : ossl-learning@ensao.ump.ma</p>
+    <div class="footer-links mb-2">
+      <a href="#" class="text-decoration-none me-3">Politique de confidentialité</a>
+      <a href="#" class="text-decoration-none">Conditions d'utilisation</a>
+    </div>
+    <p class="mb-0">© 2025 - OSSL Learning</p>
+  </div>
+</footer>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  
+  document.querySelectorAll('.edit-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const row = this.closest('tr');
+      const cells = row.querySelectorAll('td');
+      
+      document.getElementById('nom').value = cells[0].textContent;
+      document.getElementById('date').value = formatDateForInput(cells[1].textContent);
+      document.getElementById('debut').value = cells[2].textContent;
+      document.getElementById('fin').value = cells[3].textContent;
+      
+      document.getElementById('form-title').textContent = 'Modifier le cours';
+      document.getElementById('form-cours').scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+  
+  
+  document.getElementById('cancel-edit').addEventListener('click', function() {
+    document.getElementById('form-title').textContent = 'Ajouter un nouveau cours';
+    document.getElementById('cours-id').value = '';
+  });
+  
+  
+  document.getElementById('submit-planning').addEventListener('click', function() {
+    if(confirm('Voulez-vous vraiment soumettre ce planning définitivement ?')) {
+      alert('Planning soumis avec succès !');
+      
+    }
+  });
+  
+  function formatDateForInput(dateString) {
+    const parts = dateString.split('/');
+    return `${parts[2]}-${parts[1].padStart(2, '0')}-${parts[0].padStart(2, '0')}`;
+  }
+});
+</script>
+</body>
+</html>

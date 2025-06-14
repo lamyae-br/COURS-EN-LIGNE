@@ -1,0 +1,43 @@
+/* Style des notifications */
+.notifications-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.notification-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #46abea;
+}
+
+.notification-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.notification-card h5 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.notification-card p {
+    color: #495057;
+    margin-bottom: 15px;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+    .notification-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .notification-header small {
+        margin-top: 5px;
+    }
+}

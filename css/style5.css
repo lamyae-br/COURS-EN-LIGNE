@@ -1,0 +1,178 @@
+/* Style général */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #c2d5e8;
+    color: #212529;
+}
+
+/* Navigation */
+.navbar {
+    background-color: #46abea !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+/* Contenu principal */
+.content {
+    padding-top: 80px;
+    padding-bottom: 60px;
+}
+
+/* Sections */
+.professeur-section {
+    background-color: white;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e9ecef;
+}
+
+.section-title {
+    color: #46abea;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #46abea;
+}
+
+/* Formulaire */
+.form-control {
+    padding: 10px 15px;
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+}
+
+.form-control:focus {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.form-label {
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+/* Boutons */
+.btn {
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    transform: translateY(-2px);
+}
+
+.btn-outline-secondary {
+    border-width: 2px;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #6c757d;
+}
+
+.btn-success {
+    background-color: #198754;
+    border-color: #198754;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 10px rgba(25, 135, 84, 0.2);
+}
+
+.btn-success:hover {
+    background-color: #157347;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(25, 135, 84, 0.3);
+}
+
+/* Tableau */
+.prof-table {
+    margin-top: 15px;
+}
+
+.prof-table th {
+    background-color: #46abea;
+    color: white;
+    font-weight: 500;
+    padding: 12px 15px;
+}
+
+.prof-table td {
+    vertical-align: middle;
+    padding: 12px 15px;
+    border-top: 1px solid #e9ecef;
+}
+
+.prof-table tr:hover td {
+    background-color: #f8f9fa;
+}
+
+/* Boutons d'action tableau */
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 0.85rem;
+}
+
+/* Pied de page */
+footer {
+    background-color:#46abea ;
+    color: #697a84;
+    font-size: 0.9rem;
+}
+
+.footer-links a {
+    color: #495057;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: #46abea;
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 1.3rem;
+    }
+    
+    .prof-table th, 
+    .prof-table td {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+    
+    .btn {
+        padding: 8px 15px;
+    }
+    
+    #submit-planning {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .content {
+        padding-top: 70px;
+    }
+    
+    .professeur-section {
+        padding: 15px;
+    }
+    
+    .form-control {
+        padding: 8px 12px;
+    }
+}

@@ -1,0 +1,30 @@
+/* Styles pour le tableau étudiant */
+.table-etudiant {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.table-etudiant th {
+    background-color: #46abea;
+    color: black;
+    font-weight: 600;
+    padding: 12px;
+    text-align: left;
+}
+
+.table-etudiant td {
+    padding: 12px;
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+}
+
+/* Style pour les lignes alternées */
+.table-etudiant tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+/* Style au survol */
+.table-etudiant tbody tr:hover {
+    background-color: #e9ecef;
+}

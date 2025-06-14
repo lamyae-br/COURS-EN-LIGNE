@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Choix de Filière - Étudiant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="css/commun.css">
+  <link rel="stylesheet" href="css/style8.css">
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark shadow-sm fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="accueil.html">
+        <img src="../images/logo.png" alt="OSSL Learning" height="30" class="d-inline-block align-top">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="accueil.html">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Planning_etud.html">Planning</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Choix de filière</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="deconnexion.html">Déconnexion</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="content container mt-5 pt-5">
+    <div class="etudiant-section">
+      <h2 class="section-title text-center mb-4">Choix de filière et niveau</h2>
+      <p class="text-muted mb-4 text-center">Veuillez sélectionner votre filière et votre niveau d'étude</p>
+
+      <form method="POST" action="traitement_choix_etudiant.php" id="formChoixFiliereEtudiant">
+        <div class="row mb-4">
+          <div class="col-md-6 mb-3">
+            <div class="card h-100 selection-card">
+              <div class="card-header bg-primary text-white">
+                <h4 class="mb-0"><i class="fas fa-graduation-cap me-2"></i> Filière</h4>
+              </div>
+              <div class="card-body">
+                <select class="form-select form-select-lg" id="selectFiliere" name="filiere" required>
+                  <option value="" selected disabled>Sélectionnez une filière</option>
+                  <option value="GSI">Génie des Systèmes Informatiques (GSI)</option>
+                  <option value="IDS">Ingénierie des Données et Systèmes (IDS)</option>
+                  <option value="IIA">Intelligence Artificielle (IIA)</option>
+                  <option value="RIT">Réseaux et Infrastructures Technologiques (RIT)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="card h-100 selection-card">
+              <div class="card-header bg-primary text-white">
+                <h4 class="mb-0"><i class="fas fa-layer-group me-2"></i> Niveau</h4>
+              </div>
+              <div class="card-body">
+                <select class="form-select form-select-lg" id="selectNiveau" name="niveau" required>
+                  <option value="" selected disabled>Sélectionnez un niveau</option>
+                  <option value="1A">1A</option>
+                  <option value="2A">2A</option>
+                  <option value="3A">3A</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-4 selection-card" id="modulesSection" style="display: none;">
+          <div class="card-header bg-primary text-white">
+            <h4 class="mb-0"><i class="fas fa-book me-2"></i> Modules disponibles</h4>
+          </div>
+          <div class="card-body">
+            <div class="row" id="modulesContainer">
+              <!-- Les modules filtrés seront affichés ici -->
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-center gap-4 mt-5">
+          <button type="button" id="btnAnnuler" class="btn btn-annuler">
+            <i class="fas fa-times-circle me-2"></i> Annuler
+          </button>
+          <button type="submit" class="btn btn-envoyer" id="btnSubmit" disabled>
+            <i class="fas fa-paper-plane me-2"></i> Envoyer mon choix
+          </button>
+        </div>
+
+        <div id="confirmationMessage" class="alert alert-success mt-4 text-center" style="display: none;">
+          <i class="fas fa-check-circle me-2"></i> Votre choix a bien été enregistré !
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="mt-5">
+    <p class="text-center">Contact : ossl-learning@ensao.ump.ma</p>
+    <div class="footer-links text-center">
+      <a href="#">Politique de confidentialité</a> |
+      <a href="#">Conditions d'utilisation</a>
+    </div>
+    <p class="mt-2 text-center">© 2025 - OSSL Learning</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const modulesDataStatic = {
+      GSI: {
+        "1A": ["Algorithmique", "Programmation Orientée Objet", "Bases de données", "Mathématiques pour l'ingénieur"],
+        "2A": ["Conception des SI", "Développement Web Avancé", "Systèmes d'Information", "Gestion de projet"],
+        "3A": ["Architecture des SI", "Cloud Computing", "Big Data", "Projet de fin d'études"]
+      },
+      IDS: {
+        "1A": ["Bases de données", "Statistiques", "Algèbre linéaire", "Programmation Python"],
+        "2A": ["Data Mining", "Machine Learning", "Visualisation de données", "Bases NoSQL"],
+        "3A": ["Big Data", "Deep Learning", "Data Engineering", "Projet de fin d'études"]
+      },
+      IIA: {
+        "1A": ["Mathématiques discrètes", "Algorithmique", "Probabilités", "Logique"],
+        "2A": ["Machine Learning", "Traitement d'images", "NLP", "Réseaux de neurones"],
+        "3A": ["Deep Learning", "IA avancée", "Robotique", "Projet de fin d'études"]
+      },
+      RIT: {
+        "1A": ["Réseaux bas niveau", "Systèmes d'exploitation", "Architecture des ordinateurs", "Programmation système"],
+        "2A": ["Réseaux avancés", "Sécurité informatique", "Virtualisation", "Cloud Computing"],
+        "3A": ["Réseaux SDN", "Cybersécurité", "IoT", "Projet de fin d'études"]
+      }
+    };
+
+    function renderModules(filiere, niveau) {
+      const modulesSection = document.getElementById('modulesSection');
+      const modulesContainer = document.getElementById('modulesContainer');
+
+      if (filiere && niveau) {
+        const modules = modulesDataStatic[filiere][niveau];
+        modulesSection.style.display = 'block';
+        modulesContainer.innerHTML = modules.map(module => `
+          <div class="col-md-6 mb-3">
+            <div class="module-card p-3 rounded">
+              <h5 class="mb-1">${module}</h5>
+              <small class="text-muted">${filiere} - ${niveau}</small>
+            </div>
+          </div>
+        `).join('');
+      } else {
+        modulesSection.style.display = 'none';
+        modulesContainer.innerHTML = '';
+      }
+    }
+
+    document.getElementById('selectFiliere').addEventListener('change', function() {
+      const filiere = this.value;
+      const niveau = document.getElementById('selectNiveau').value;
+      renderModules(filiere, niveau);
+    });
+
+    document.getElementById('selectNiveau').addEventListener('change', function() {
+      const filiere = document.getElementById('selectFiliere').value;
+      const niveau = this.value;
+      renderModules(filiere, niveau);
+    });
+
+    document.getElementById('btnAnnuler').addEventListener('click', function() {
+      document.getElementById('selectFiliere').value = '';
+      document.getElementById('selectNiveau').value = '';
+      renderModules(null, null);
+    });
+  </script>
+</body>
+</html>

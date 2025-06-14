@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Espace Professeur - OSSL Learning</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/commun.css">
+  <link rel="stylesheet" href="css/style1.css"> 
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark shadow-sm fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="index.html">OSSL Learning</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Planning.html">Planning</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="deconnexion.html">Déconnexion</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="content container mt-5 pt-5">
+  <h2 class="text-center mb-4">Bienvenue à l'Espace Professeur</h2>
+
+  
+  <div class="row justify-content-center" id="connexion-section">
+    <div class="col-md-6">
+      <h4>Connexion</h4>
+      <form action="connexion_action.php" method="POST">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="mb-3">
+          <label for="mot_de_passe" class="form-label">Mot de Passe</label>
+          <input type="password" class="form-control" id="mot_de_passe" name="mot_de_passe" required>
+        </div>
+        <div class="mb-3 text-end">
+          <a href="#" class="text-muted">Mot de passe oublié ?</a>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg w-100">Se connecter</button>
+      </form>
+
+      <div class="my-4 text-center">
+        <p>Vous n'avez pas de compte ? <a href="#" id="go-to-inscription">Créer un nouveau compte</a></p>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="row justify-content-center d-none" id="inscription-section">
+    <div class="col-md-6">
+      <h4>Inscription</h4>
+      <form action="inscription_action.php" method="POST">
+        <div class="mb-3">
+          <label for="id_professeur" class="form-label">ID Professeur</label>
+          <input type="text" class="form-control" id="id_professeur" name="id_professeur" required>
+        </div>
+        <div class="mb-3">
+          <label for="nom" class="form-label">Nom</label>
+          <input type="text" class="form-control" id="nom" name="nom" required>
+        </div>
+        <div class="mb-3">
+          <label for="prenom" class="form-label">Prénom</label>
+          <input type="text" class="form-control" id="prenom" name="prenom" required>
+        </div>
+        <div class="mb-3">
+          <label for="departement" class="form-label">Département</label>
+          <input type="text" class="form-control" id="departement" name="departement" required>
+        </div>
+        <div class="mb-3">
+          <label for="email_inscription" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email_inscription" name="email_inscription" required>
+        </div>
+        <div class="mb-3">
+          <label for="mot_de_passe_inscription" class="form-label">Mot de Passe</label>
+          <input type="password" class="form-control" id="mot_de_passe_inscription" name="mot_de_passe_inscription" required>
+        </div>
+        <div class="mb-3">
+          <label for="confirmation_mot_de_passe" class="form-label">Confirmer le Mot de Passe</label>
+          <input type="password" class="form-control" id="confirmation_mot_de_passe" name="confirmation_mot_de_passe" required>
+        </div>
+        <button type="submit" class="btn btn-success btn-lg w-100">S'inscrire</button>
+      </form>
+
+      <div class="my-4 text-center">
+        <p>Vous avez déjà un compte ? <a href="#" id="go-to-connexion">Se connecter</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<footer>
+  <p>Contact : ossl-learning@ensao.ump.ma</p>
+  <div class="footer-links">
+    <a href="#">Politique de confidentialité</a> |
+    <a href="#">Conditions d’utilisation</a>
+  </div>
+  <p class="mt-2">© 2025 - OSSL Learning</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  document.getElementById('go-to-inscription').addEventListener('click', function (e) {
+    e.preventDefault();
+    document.getElementById('connexion-section').classList.add('d-none');
+    document.getElementById('inscription-section').classList.remove('d-none');
+    window.scrollTo(0, document.body.scrollHeight);
+  });
+
+  
+  document.getElementById('go-to-connexion').addEventListener('click', function (e) {
+    e.preventDefault();
+    document.getElementById('inscription-section').classList.add('d-none');
+    document.getElementById('connexion-section').classList.remove('d-none');
+    window.scrollTo(0, 0);
+  });
+</script>
+</body>
+</html>

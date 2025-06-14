@@ -1,0 +1,17 @@
+body {
+  padding-top: 56px; /* Pour compenser la navbar fixe */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.content {
+  min-height: calc(100vh - 120px);
+}
+
+.navbar {
+  background-color:#46abea  !important;
+}
+
+.nav-link.active {
+  font-weight: bold;
+  border-bottom: 2px solid #98b2da;
+}

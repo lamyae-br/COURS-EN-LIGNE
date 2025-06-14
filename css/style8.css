@@ -1,0 +1,323 @@
+/* choix_filiere_etudiant.css - Version complète */
+
+/* Base Styles */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2c3e50;
+    line-height: 1.6;
+}
+
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-bottom: 50px;
+}
+
+.section-title {
+    color: #2c3e50;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 10px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.section-title:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, #3498db, #2ecc71);
+}
+
+/* Cards Container */
+.selection-card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 25px;
+    overflow: hidden;
+}
+
+.selection-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+}
+
+.card-header {
+    border-radius: 10px 10px 0 0 !important;
+    padding: 15px 20px;
+    background-color: #3498db !important;
+    color: white !important;
+}
+
+.card-header h4 {
+    margin: 0;
+    font-weight: 600;
+}
+
+.card-header i {
+    margin-right: 10px;
+}
+
+/* Filière Options */
+.filiere-option {
+    background-color: #ffffff;
+    border-left: 4px solid transparent;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.filiere-option:hover {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    border-left-color: #3498db;
+}
+
+.filiere-option.selected {
+    border-left-color: #2ecc71;
+    background-color: #f0fff4;
+    box-shadow: 0 5px 15px rgba(46, 204, 113, 0.2);
+}
+
+.filiere-option .form-check-label {
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.filiere-option p {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-top: 8px;
+    margin-bottom: 0;
+}
+
+/* Filière Icons */
+.filiere-option .fa-laptop-code { color: #3498db; } /* GSI */
+.filiere-option .fa-database { color: #9b59b6; }   /* IDS */
+.filiere-option .fa-robot { color: #e74c3c; }     /* IIA */
+.filiere-option .fa-network-wired { color: #f39c12; } /* RIT */
+
+/* Niveau Options */
+.niveau-option {
+    background-color: #f8fafc;
+    text-align: center;
+    height: 100%;
+    padding: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.niveau-option:hover {
+    background-color: #ebf5ff;
+}
+
+.niveau-option.selected {
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
+}
+
+.niveau-option .form-check-label {
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.niveau-option p {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-top: 8px;
+    margin-bottom: 0;
+}
+
+/* Niveau Icons */
+.niveau-option .fa-star { color: #f1c40f; }       /* 1A */
+.niveau-option .fa-star-half-alt { color: #e67e22; } /* 2A */
+.niveau-option .fa-certificate { color: #2ecc71; } /* 3A */
+
+/* Modules Section */
+#modulesSection {
+    background-color: #f9f9f9;
+    border-top: 3px solid #3498db;
+    display: none;
+}
+
+.module-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+    padding: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.module-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    animation: pulse 0.5s ease;
+}
+
+.module-card i {
+    font-size: 1.5rem;
+    background: linear-gradient(to right, #3498db, #2ecc71);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-right: 15px;
+}
+
+.module-card h5 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #2c3e50;
+}
+
+.module-card small {
+    color: #6c757d;
+    font-size: 0.8rem;
+}
+
+/* Buttons */
+.btn-envoyer, .btn-annuler {
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-envoyer {
+    background: linear-gradient(to right, #2ecc71, #27ae60);
+    color: white;
+    box-shadow: 0 4px 6px rgba(46, 204, 113, 0.3);
+}
+
+.btn-envoyer:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(46, 204, 113, 0.4);
+    color: white;
+}
+
+.btn-annuler {
+    background: linear-gradient(to right, #e74c3c, #c0392b);
+    color: white;
+    box-shadow: 0 4px 6px rgba(231, 76, 60, 0.3);
+}
+
+.btn-annuler:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(231, 76, 60, 0.4);
+    color: white;
+}
+
+.btn i {
+    margin-right: 8px;
+}
+
+/* Confirmation Message */
+#confirmationMessage {
+    border-radius: 50px;
+    box-shadow: 0 3px 10px rgba(46, 204, 113, 0.3);
+    border: none;
+    background: linear-gradient(to right, #2ecc71, #27ae60);
+    color: white;
+    padding: 15px 20px;
+    display: none;
+    max-width: 400px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+#confirmationMessage i {
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.alert {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content {
+        padding: 15px;
+        padding-top: 80px;
+    }
+    
+    .filiere-option, .niveau-option {
+        text-align: center;
+        padding: 15px 10px !important;
+    }
+    
+    .filiere-option i, .niveau-option i {
+        display: block;
+        margin: 0 auto 10px;
+        font-size: 1.8rem;
+    }
+    
+    .filiere-option .form-check-label, 
+    .niveau-option .form-check-label {
+        flex-direction: column;
+    }
+    
+    .module-card {
+        text-align: center;
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    .module-card i {
+        display: block;
+        margin: 0 auto 15px;
+        font-size: 2rem;
+    }
+    
+    .btn-envoyer, .btn-annuler {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .card-header h4 {
+        font-size: 1.2rem;
+    }
+    
+    .filiere-option p, 
+    .niveau-option p {
+        font-size: 0.8rem;
+    }
+}
